@@ -1,0 +1,29 @@
+系统配置：
+更换镜像源（提高下载速度）
+软件与更新中更换默认的源为国内镜像源
+更新系统驱动以及软件更新
+环境配置：
+anacond安装
+wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+bash 命令安装anaconda
+bash Anaconda3-2024.10-1-Linux-x86_64.sh
+sraskiot安装
+安装后配置环境
+export PATH="/home/BioApp/sraskit v###/bin:$PATH"
+IBM Aspera安装
+Steam++加速：
+cd /opt/steam++
+./Steam++.sh
+
+trimmoatic安装与使用
+数据处理：fastq-dump --split-files *.sra
+(处理双端数据)
+调用trimmoatic:java -jar /home/lu/BioApp/Trimmomatic-0.39/trimmomatic-0.39.jar
+PE（双端序列）
+代码：
+java -jar /home/lu/BioApp/Trimmomatic-0.39/trimmomatic-0.39.jar PE SRR####_1.fastq SRR####_2.fastq
+result/SRR####_1paired.fastq.gz result/SRR####_1unpaired.fastq.gz
+result/SRR####_2paired.fastq.gz result/SRR####_2unpaired.fastq.gz
+ILLUMINACLIP:TruSeq-PE.fa:2:30:10 LEADING:3 TRAILING:3
+SLIDINGWINDOW:4:15 CROP:76 MINLEN:76
+说明：去除低质量的reads和接头序列，此外，切割reads两端的核苷酸，直到剩下的核苷酸（clean reads）长度为76bp
